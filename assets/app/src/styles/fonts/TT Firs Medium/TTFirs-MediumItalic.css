@@ -1,0 +1,12 @@
+/* Webfont: TTFirs-MediumItalic */@font-face {
+    font-family: 'TTFirsMedium';
+    src: url('TTFirs-MediumItalic.eot'); /* IE9 Compat Modes */
+    src: url('TTFirs-MediumItalic.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('TTFirs-MediumItalic.woff') format('woff'), /* Modern Browsers */
+         url('TTFirs-MediumItalic.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('TTFirs-MediumItalic.svg#TTFirs-MediumItalic') format('svg'); /* Legacy iOS */
+    font-style: italic;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}
+
