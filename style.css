@@ -1,11 +1,11 @@
 /*
-Theme Name: GraphQL Workshop - Starting Point
+Theme Name: GraphQL Workshop - Create React App
 Theme URI: https://wpgraphql.com/
 Author: WPGraphQL
 Author URI: https://wpgraphql.com/
-Description: This is the starting point for the GraphQL Workshop. We're starting at a very basic spot with very little
-going on.
-Version: 0.0.1
+Description: Create React App - At this stage, we've now installed the Create React App boilerplate within our WordPress
+theme and have used our inc/setup.php file to enqueue assets to the WordPress theme
+Version: 0.0.2
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: JavaScript, GraphQL, Single Page App
