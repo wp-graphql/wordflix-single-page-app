@@ -1,4 +1,18 @@
 {
-  "main.js": "static/js/main.ce06d660.js",
-  "main.js.map": "static/js/main.ce06d660.js.map"
+  "main.css": "static/css/main.73d988ce.css",
+  "main.css.map": "static/css/main.73d988ce.css.map",
+  "main.js": "static/js/main.cdda351b.js",
+  "main.js.map": "static/js/main.cdda351b.js.map",
+  "static/media/TTFirs-ExtraBoldItalic.eot": "static/media/TTFirs-ExtraBoldItalic.e051224e.eot",
+  "static/media/TTFirs-ExtraBoldItalic.svg": "static/media/TTFirs-ExtraBoldItalic.f55bdc9b.svg",
+  "static/media/TTFirs-ExtraBoldItalic.ttf": "static/media/TTFirs-ExtraBoldItalic.7ce6cc2b.ttf",
+  "static/media/TTFirs-ExtraBoldItalic.woff": "static/media/TTFirs-ExtraBoldItalic.5847892a.woff",
+  "static/media/animeace2_bld-webfont.woff": "static/media/animeace2_bld-webfont.d8a03347.woff",
+  "static/media/animeace2_bld-webfont.woff2": "static/media/animeace2_bld-webfont.997c61e7.woff2",
+  "static/media/animeace2_ital-webfont.woff": "static/media/animeace2_ital-webfont.0ecf14db.woff",
+  "static/media/animeace2_ital-webfont.woff2": "static/media/animeace2_ital-webfont.454bb907.woff2",
+  "static/media/animeace2_reg-webfont.woff": "static/media/animeace2_reg-webfont.d0635872.woff",
+  "static/media/animeace2_reg-webfont.woff2": "static/media/animeace2_reg-webfont.ab1417c7.woff2",
+  "static/media/avengeance_mightiest_avenger-webfont.woff": "static/media/avengeance_mightiest_avenger-webfont.d6c991fa.woff",
+  "static/media/avengeance_mightiest_avenger-webfont.woff2": "static/media/avengeance_mightiest_avenger-webfont.85708dd8.woff2"
 }

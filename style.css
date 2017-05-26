@@ -1,12 +1,12 @@
 /*
-Theme Name: GraphQL Workshop - Prepare React App
+Theme Name: GraphQL Workshop - Home Page and Styled Components
 Theme URI: https://wpgraphql.com/
 Author: WPGraphQL
 Author URI: https://wpgraphql.com/
-Description: Prepare React App - At this point, we've modified the files that came with Create React App to give ourselves
-a clean slate to work from, but still take advantage of the great build-scripts that Create React App provides. We've
-also set ourselves up with some NPM packages that we will use later on.
-Version: 0.0.3
+Description: Home Page and Styled Components - At this point, we've created a homepage and experimented with different
+ways of styling, primarily focusing on Styled Components. We also abstracted our HomePage into it's own file and imported
+it back into our index.js file.
+Version: 0.0.4
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: JavaScript, GraphQL, Single Page App
