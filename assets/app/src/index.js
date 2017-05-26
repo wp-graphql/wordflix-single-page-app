@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
+/**
+ * NOTE: This imports the entire Ant Design CSS, which is overkill. . .I would recommend only importing the parts
+ * that you actually need, but this is fast to get up and running.
+ */
+import 'antd/dist/antd.css';
+import './styles/style.css';
+
 class HomePage extends Component {
   render() {
     return(
