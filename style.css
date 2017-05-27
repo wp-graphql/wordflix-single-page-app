@@ -1,12 +1,11 @@
 /*
-Theme Name: GraphQL Workshop - Home Page and Styled Components
+Theme Name: GraphQL Workshop - Routing
 Theme URI: https://wpgraphql.com/
 Author: WPGraphQL
 Author URI: https://wpgraphql.com/
-Description: Home Page and Styled Components - At this point, we've created a homepage and experimented with different
-ways of styling, primarily focusing on Styled Components. We also abstracted our HomePage into it's own file and imported
-it back into our index.js file.
-Version: 0.0.4
+Description: Routing - At this point, we now have routing setup so that we can visit the "/movies" url and "/movies/:movieId"
+and will see the MoviesPage and MoviePage components rendered respectively.
+Version: 0.0.5
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: JavaScript, GraphQL, Single Page App
