@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Router, Route, browserHistory, applyRouterMiddleware } from 'react-router';
 import { useScroll } from 'react-router-scroll';
 import HomePage from './components/HomePage';
+import PageLayout from './components/PageLayout';
 import MoviePage from './components/MoviePage';
 import MoviesPage from './components/MoviesPage';
 
@@ -21,8 +22,10 @@ class App extends Component {
   render() {
     return(
       <Router history={browserHistory} render={applyRouterMiddleware(useScroll())}>
-        <Route path="/movies" component={MoviesPage} />
-        <Route path="/movies/:movieId" component={MoviePage} />
+        <Route component={PageLayout} >
+          <Route path="/movies" component={MoviesPage} />
+          <Route path="/movies/:movieId" component={MoviePage} />
+        </Route>
         <Route path="*" component={HomePage} />
       </Router>
     )
