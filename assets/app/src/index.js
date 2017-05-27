@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, browserHistory, applyRouterMiddleware, Link } from 'react-router';
+import { Router, Route, browserHistory, applyRouterMiddleware } from 'react-router';
 import { useScroll } from 'react-router-scroll';
 import HomePage from './components/HomePage';
+import MoviePage from './components/MoviePage';
+import MoviesPage from './components/MoviesPage';
 
 /**
  * NOTE: This imports the entire Ant Design CSS, which is overkill. . .I would recommend only importing the parts
@@ -11,31 +13,6 @@ import HomePage from './components/HomePage';
 import 'antd/dist/antd.css';
 import './styles/style.css';
 
-class MoviesPage extends Component {
-  render() {
-    return(
-      <div>
-        <h1>This is the movies list page</h1>
-        <Link to="/">Home</Link>
-        <br/>
-        <Link to="/movies/some-movie-id">Movie Details Page</Link>
-      </div>
-    );
-  }
-}
-
-class MoviePage extends Component {
-  render() {
-    return(
-      <div>
-        <h1>This is the movie detail page</h1>
-        <Link to="/">Home</Link>
-        <br/>
-        <Link to="/movies">Movies List Page</Link>
-      </div>
-    );
-  }
-}
 
 /**
  * This is the only component we actually render directly to the DOM!
