@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router';
 import { Row, Col, Card } from 'antd';
+import { gql, graphql } from 'react-apollo';
 
 /**
  * Create a styled H1 component
@@ -98,4 +99,31 @@ class MoviesPage extends Component {
   }
 }
 
-export default MoviesPage;
+/**
+ * Write the GraphQL query to get the list of movies.
+ */
+const moviesQuery = gql`
+  query moviesList{
+    posts {
+      edges {
+        node {
+          id
+          title
+          featuredImage {
+            sourceUrl
+          }
+        }
+      }
+    }
+  }
+`;
+
+/**
+ * Connect the GraphQL query with our MoviesPage component
+ */
+const MoviesPageWithData = graphql(moviesQuery)(MoviesPage);
+
+/**
+ * Export our component that is connected to Apollo
+ */
+export default MoviesPageWithData;
