@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import { gql, graphql } from 'react-apollo';
 
 /**
  * This is the div that contains the Details about the movie (poster, title, description, etc)
@@ -46,19 +47,67 @@ const MovieContent = styled.div`
 
 class MoviePage extends Component {
   render() {
-    return(
-      <MovieDetails>
-        <Poster>
-          <img alt={'poster for Movie Title'} src="http://placehold.it/341x512" />
-        </Poster>
-        <MovieContent>
-          <h2>Movie Title</h2>
-          <h3>Released: realease date</h3><br/>
-          <div>Movie description</div>
-        </MovieContent>
-      </MovieDetails>
-    );
+
+    /**
+     * This gets the "data" out of the components props
+     */
+    const { data: { post, loading } } = this.props;
+
+    /**
+     * Configure the posterUrl
+     * @type {string}
+     */
+    let posterUrl = 'http://placehold.it/341x512';
+    if ( post && post.featuredImage && post.featuredImage.sourceUrl ) {
+      posterUrl = post.featuredImage.sourceUrl;
+    }
+
+    if ( loading ) {
+      return <div>Loading...</div>;
+    } else {
+      return (
+        <MovieDetails>
+          <Poster>
+            <img alt={'poster for ' + post.title } src={ posterUrl } />
+          </Poster>
+          <MovieContent>
+            <h2>{post.title}</h2>
+            <h3>Released: TBA</h3><br/>
+            <div dangerouslySetInnerHTML={ { __html: post.content } } />
+          </MovieContent>
+        </MovieDetails>
+      );
+    }
   }
 }
 
-export default MoviePage;
+/**
+ * Here we query for a single post (movie) by passing the ID as a variable.
+ */
+const movieQuery = gql`
+    query getMovie($id:ID!){
+      post(id:$id){
+        id
+        title
+        content
+        featuredImage{
+            sourceUrl
+        }
+      }
+    }
+`;
+
+/**
+ * Here, we setup the variables to use in the GraphQL query by getting the ID of the movie from the
+ * route (/movies/:movieId). The "movieId" will be used in the query to fetch data to populate
+ * the page.
+ */
+const MoviePageWithData = graphql(movieQuery, {
+  options: ({routeParams}) => ({
+    variables: {
+      id: routeParams && routeParams.movieId ? routeParams.movieId : null,
+    }
+  })
+})(MoviePage);
+
+export default MoviePageWithData;

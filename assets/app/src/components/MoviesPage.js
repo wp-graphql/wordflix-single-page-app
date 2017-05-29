@@ -65,7 +65,7 @@ class MovieCard extends Component {
 
     return(
       <Card style={{marginBottom: '40px', flex:1}} bodyStyle={{ padding: 0 }}>
-        <Link to="movies/movieId" >
+        <Link to={"movies/" + movie.id } >
           <div>
             <img src={posterUrl} width="100%" alt={"poster for " + movie.title}/>
             <MovieTitle>{movie.title}</MovieTitle>
