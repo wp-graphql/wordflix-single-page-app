@@ -1,11 +1,11 @@
 /*
-Theme Name: GraphQL Workshop - Routing
+Theme Name: GraphQL Workshop - Styling the Routes
 Theme URI: https://wpgraphql.com/
 Author: WPGraphQL
 Author URI: https://wpgraphql.com/
-Description: Routing - At this point, we now have routing setup so that we can visit the "/movies" url and "/movies/:movieId"
-and will see the MoviesPage and MoviePage components rendered respectively.
-Version: 0.0.5
+Description: Styling the Routes - At this point, we now have a HomePage, MoviesPage and MoviePage, all with basic
+structure and styles. We also have links that take us to the various routes.
+Version: 0.0.6
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: JavaScript, GraphQL, Single Page App
