@@ -48,12 +48,27 @@ class MovieCard extends Component {
    * Render a Card component with the Movie poster and title
    */
   render() {
+
+    /**
+     * Get the movie from the props that were passed to the component
+     */
+    let { movie } = this.props;
+
+    /**
+     * Set the posterUrl using placehold.it as a fallback
+     * @type {string}
+     */
+    let posterUrl = 'http://placehold.it/236x332';
+    if ( movie.featuredImage && movie.featuredImage.sourceUrl ) {
+      posterUrl = movie.featuredImage.sourceUrl;
+    }
+
     return(
       <Card style={{marginBottom: '40px', flex:1}} bodyStyle={{ padding: 0 }}>
         <Link to="movies/movieId" >
           <div>
-            <img src="http://placehold.it/236x332" alt="poster for movie title"/>
-            <MovieTitle>Movie Title</MovieTitle>
+            <img src={posterUrl} width="100%" alt={"poster for " + movie.title}/>
+            <MovieTitle>{movie.title}</MovieTitle>
           </div>
         </Link>
       </Card>
@@ -63,39 +78,40 @@ class MovieCard extends Component {
 
 class MoviesPage extends Component {
   render() {
-    return(
-      <div>
-        <PageTitle>Movies</PageTitle>
-        <MoviesWrapper>
-          <Row gutter={40} type="flex" justify="space-between" align="center">
-            <Col xs={24} sm={12} md={8} lg={6}>
-              <MovieCard />
-            </Col>
-            <Col xs={24} sm={12} md={8} lg={6}>
-              <MovieCard />
-            </Col>
-            <Col xs={24} sm={12} md={8} lg={6}>
-              <MovieCard />
-            </Col>
-            <Col xs={24} sm={12} md={8} lg={6}>
-              <MovieCard />
-            </Col>
-            <Col xs={24} sm={12} md={8} lg={6}>
-              <MovieCard />
-            </Col>
-            <Col xs={24} sm={12} md={8} lg={6}>
-              <MovieCard />
-            </Col>
-            <Col xs={24} sm={12} md={8} lg={6}>
-              <MovieCard />
-            </Col>
-            <Col xs={24} sm={12} md={8} lg={6}>
-              <MovieCard />
-            </Col>
-          </Row>
-        </MoviesWrapper>
-      </div>
-    );
+
+    /**
+     * Get the data out of the props. "data" is a prop that Apollo provides
+     * which includes the data returned from the GraphQL query
+     */
+    let { data } = this.props;
+
+    /**
+     * Apollo sets data.loading to true if the query is being fetched an we're waiting for data
+     * to be returned. If this is the case, we can show the user some feedback that
+     * the content is loading. And if it's not loading, we can render the actual data.
+     */
+    if ( data.loading ) {
+      return <div>Loading...</div>
+    } else {
+      return (
+        <div>
+          <PageTitle>Movies</PageTitle>
+          <MoviesWrapper>
+            <Row gutter={40} type="flex" justify="space-between" align="center">
+              {
+                data.posts.edges.map((edge, i) => {
+                  return (
+                    <Col key={i} xs={24} sm={12} md={8} lg={6}>
+                      <MovieCard movie={edge.node} key={i}/>
+                    </Col>
+                  )
+                })
+              }
+            </Row>
+          </MoviesWrapper>
+        </div>
+      );
+    }
   }
 }
 
