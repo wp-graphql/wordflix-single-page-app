@@ -1,11 +1,12 @@
 /*
-Theme Name: GraphQL Workshop - Customize the GraphQL Schema
+Theme Name: GraphQL Workshop - GraphQL Pagination
 Theme URI: https://wpgraphql.com/
 Author: WPGraphQL
 Author URI: https://wpgraphql.com/
-Description: Customize the GraphQL Schema - In this step, we customize the GraphQL schema by adding a "releaseDate" field
-to the "post" type, which resolves as a custom postmeta value. We also add the field to our query on our MoviePage and
-output the field in our component, replacing our "TBA" placeholder text.
+Description: GraphQL Pagination - In this step we add pagination to our MoviesPage by adjusting our Apollo connection to
+handle loading more entries. We fetch more entries using WPGraphQL's cursor pagination, and we store the cursor in
+Apollo and use the cursor to fetch more entries when our Load More button is clicked, then we merge the new
+entries with the existing entries.
 Version: 0.0.10
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
