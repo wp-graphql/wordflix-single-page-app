@@ -1,12 +1,10 @@
 /*
-Theme Name: GraphQL Workshop - GraphQL Queries
+Theme Name: GraphQL Workshop - GraphQL Aliasing
 Theme URI: https://wpgraphql.com/
 Author: WPGraphQL
 Author URI: https://wpgraphql.com/
-Description: GraphQL Queries - At this point, we have successfully hooked up our Single Page App to fetch data from
-WordPress using Apollo Client and GraphQL queries, save the data in our Redux store and render the data in our
-components.
-Version: 0.0.8
+Description: GraphQL Aliasing - Not a crucial step, just a demo of a powerful feature of GraphQL, Aliasing.
+Version: 0.0.9
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: JavaScript, GraphQL, Single Page App
