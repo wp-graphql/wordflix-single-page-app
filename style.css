@@ -1,13 +1,11 @@
 /*
-Theme Name: GraphQL Workshop - GraphQL Pagination
+Theme Name: GraphQL Workshop - Loading Screens
 Theme URI: https://wpgraphql.com/
 Author: WPGraphQL
 Author URI: https://wpgraphql.com/
-Description: GraphQL Pagination - In this step we add pagination to our MoviesPage by adjusting our Apollo connection to
-handle loading more entries. We fetch more entries using WPGraphQL's cursor pagination, and we store the cursor in
-Apollo and use the cursor to fetch more entries when our Load More button is clicked, then we merge the new
-entries with the existing entries.
-Version: 0.0.10
+Description: Loading Screens - The app now has loading screens to indicate that the server is fetching data and provide
+the user with some visual feedback while data is being fetched.
+Version: 0.0.11
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: JavaScript, GraphQL, Single Page App
