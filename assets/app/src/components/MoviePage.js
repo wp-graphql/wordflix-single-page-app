@@ -51,15 +51,15 @@ class MoviePage extends Component {
     /**
      * This gets the "data" out of the components props
      */
-    const { data: { post, loading } } = this.props;
+    const { data: { movie, loading } } = this.props;
 
     /**
      * Configure the posterUrl
      * @type {string}
      */
     let posterUrl = 'http://placehold.it/341x512';
-    if ( post && post.featuredImage && post.featuredImage.sourceUrl ) {
-      posterUrl = post.featuredImage.sourceUrl;
+    if ( movie && movie.poster && movie.poster.url ) {
+      posterUrl = movie.poster.url;
     }
 
     if ( loading ) {
@@ -68,12 +68,12 @@ class MoviePage extends Component {
       return (
         <MovieDetails>
           <Poster>
-            <img alt={'poster for ' + post.title } src={ posterUrl } />
+            <img alt={'poster for ' + movie.title } src={ posterUrl } />
           </Poster>
           <MovieContent>
-            <h2>{post.title}</h2>
+            <h2>{movie.title}</h2>
             <h3>Released: TBA</h3><br/>
-            <div dangerouslySetInnerHTML={ { __html: post.content } } />
+            <div dangerouslySetInnerHTML={ { __html: movie.content } } />
           </MovieContent>
         </MovieDetails>
       );
@@ -86,12 +86,12 @@ class MoviePage extends Component {
  */
 const movieQuery = gql`
     query getMovie($id:ID!){
-      post(id:$id){
+      movie:post(id:$id){
         id
         title
         content
-        featuredImage{
-            sourceUrl
+        poster:featuredImage{
+            url:sourceUrl
         }
       }
     }

@@ -59,8 +59,8 @@ class MovieCard extends Component {
      * @type {string}
      */
     let posterUrl = 'http://placehold.it/236x332';
-    if ( movie.featuredImage && movie.featuredImage.sourceUrl ) {
-      posterUrl = movie.featuredImage.sourceUrl;
+    if ( movie.poster && movie.poster.url ) {
+      posterUrl = movie.poster.url;
     }
 
     return(
@@ -99,10 +99,10 @@ class MoviesPage extends Component {
           <MoviesWrapper>
             <Row gutter={40} type="flex" justify="space-between" align="center">
               {
-                data.posts.edges.map((edge, i) => {
+                data.movies.edges.map((edge, i) => {
                   return (
                     <Col key={i} xs={24} sm={12} md={8} lg={6}>
-                      <MovieCard movie={edge.node} key={i}/>
+                      <MovieCard movie={edge.movie} key={i}/>
                     </Col>
                   )
                 })
@@ -120,13 +120,13 @@ class MoviesPage extends Component {
  */
 const moviesQuery = gql`
   query moviesList{
-    posts {
+    movies:posts {
       edges {
-        node {
+        movie:node {
           id
           title
-          featuredImage {
-            sourceUrl
+          poster:featuredImage {
+            url:sourceUrl
           }
         }
       }
