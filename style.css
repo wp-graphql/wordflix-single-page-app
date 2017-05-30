@@ -1,10 +1,12 @@
 /*
-Theme Name: GraphQL Workshop - GraphQL Aliasing
+Theme Name: GraphQL Workshop - Customize the GraphQL Schema
 Theme URI: https://wpgraphql.com/
 Author: WPGraphQL
 Author URI: https://wpgraphql.com/
-Description: GraphQL Aliasing - Not a crucial step, just a demo of a powerful feature of GraphQL, Aliasing.
-Version: 0.0.9
+Description: Customize the GraphQL Schema - In this step, we customize the GraphQL schema by adding a "releaseDate" field
+to the "post" type, which resolves as a custom postmeta value. We also add the field to our query on our MoviePage and
+output the field in our component, replacing our "TBA" placeholder text.
+Version: 0.0.10
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: JavaScript, GraphQL, Single Page App
