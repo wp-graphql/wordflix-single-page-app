@@ -42,6 +42,26 @@ const MovieTitle = styled.h2`
   padding:10px;
 `;
 
+/**
+ * Create a styled div used for loading more items
+ */
+const LoadMore = styled.div`
+  background:#ad0000;
+  color:white;
+  border-radius:25px;
+  text-align:center;
+  font-size: 25px;
+  line-height: 40px;
+  padding: 10px 20px;
+  font-family:TTFirsMedium;
+  margin: 0 auto 50px;
+  &:hover{
+    background:#0087be;
+  }
+  display:inline-block;
+  cursor:pointer;
+`;
+
 class MovieCard extends Component {
 
   /**
@@ -77,20 +97,27 @@ class MovieCard extends Component {
 }
 
 class MoviesPage extends Component {
+
+  loadMoreButton( pageInfo, loadMoreEntries ) {
+    if ( pageInfo.hasPreviousPage ) {
+      return ( <LoadMore onClick={ loadMoreEntries }>Load More</LoadMore> );
+    }
+  }
+
   render() {
 
     /**
      * Get the data out of the props. "data" is a prop that Apollo provides
      * which includes the data returned from the GraphQL query
      */
-    let { data } = this.props;
+    let { data: { loading, movies, loadMoreEntries } } = this.props;
 
     /**
      * Apollo sets data.loading to true if the query is being fetched an we're waiting for data
      * to be returned. If this is the case, we can show the user some feedback that
      * the content is loading. And if it's not loading, we can render the actual data.
      */
-    if ( data.loading ) {
+    if ( loading ) {
       return <div>Loading...</div>
     } else {
       return (
@@ -99,7 +126,7 @@ class MoviesPage extends Component {
           <MoviesWrapper>
             <Row gutter={40} type="flex" justify="space-between" align="center">
               {
-                data.movies.edges.map((edge, i) => {
+                movies.edges.map((edge, i) => {
                   return (
                     <Col key={i} xs={24} sm={12} md={8} lg={6}>
                       <MovieCard movie={edge.movie} key={i}/>
@@ -107,6 +134,9 @@ class MoviesPage extends Component {
                   )
                 })
               }
+            </Row>
+            <Row>
+              {this.loadMoreButton(movies.pageInfo, loadMoreEntries)}
             </Row>
           </MoviesWrapper>
         </div>
@@ -119,8 +149,12 @@ class MoviesPage extends Component {
  * Write the GraphQL query to get the list of movies.
  */
 const moviesQuery = gql`
-  query moviesList{
-    movies:posts {
+  query moviesList($cursor: String) {
+    movies:posts(last: 20, before:$cursor) {
+      pageInfo {
+        startCursor
+        hasPreviousPage
+      }
       edges {
         movie:node {
           id
@@ -137,7 +171,60 @@ const moviesQuery = gql`
 /**
  * Connect the GraphQL query with our MoviesPage component
  */
-const MoviesPageWithData = graphql(moviesQuery)(MoviesPage);
+const MoviesPageWithData = graphql(moviesQuery, {
+
+  props({
+    data: {
+      loading,
+      movies,
+      fetchMore
+    }
+  }) {
+
+    /**
+     * Return the props to connect to the component
+     */
+    return {
+      data: {
+        loading,
+        movies,
+        fetchMore,
+        loadMoreEntries: () => {
+          return fetchMore({
+            query: moviesQuery,
+            variables: {
+              cursor: movies.pageInfo.startCursor
+            },
+            updateQuery: (previousResult, {fetchMoreResult}) => {
+
+              /**
+               * Pluck the new edges out of the query results
+               */
+              const newEdges = fetchMoreResult.movies.edges;
+
+              /**
+               * Pluck the new pageInfo out of the query results
+               */
+              const pageInfo = fetchMoreResult.movies.pageInfo;
+
+              /**
+               * Return the movies with the new edges merged with the existing ones, and
+               * the new pageInfo replacing the old pageInfo
+               */
+              return {
+                movies: {
+                  edges: [...previousResult.movies.edges, ...newEdges],
+                  pageInfo,
+                },
+              };
+            },
+          });
+        }
+      }
+    }
+  },
+
+})(MoviesPage);
 
 /**
  * Export our component that is connected to Apollo
