@@ -72,7 +72,7 @@ class MoviePage extends Component {
           </Poster>
           <MovieContent>
             <h2>{movie.title}</h2>
-            <h3>Released: TBA</h3><br/>
+            <h3>Released: {movie.releaseDate}</h3><br/>
             <div dangerouslySetInnerHTML={ { __html: movie.content } } />
           </MovieContent>
         </MovieDetails>
@@ -90,6 +90,7 @@ const movieQuery = gql`
         id
         title
         content
+        releaseDate
         poster:featuredImage{
             url:sourceUrl
         }
