@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { gql, graphql } from 'react-apollo';
+import LoadingScreen from './LoadingScreen';
 
 /**
  * This is the div that contains the Details about the movie (poster, title, description, etc)
@@ -63,7 +64,7 @@ class MoviePage extends Component {
     }
 
     if ( loading ) {
-      return <div>Loading...</div>;
+      return <LoadingScreen/>;
     } else {
       return (
         <MovieDetails>

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router';
 import { Row, Col, Card } from 'antd';
 import { gql, graphql } from 'react-apollo';
+import LoadingScreen from './LoadingScreen';
 
 /**
  * Create a styled H1 component
@@ -118,7 +119,7 @@ class MoviesPage extends Component {
      * the content is loading. And if it's not loading, we can render the actual data.
      */
     if ( loading ) {
-      return <div>Loading...</div>
+      return <LoadingScreen/>
     } else {
       return (
         <div>
