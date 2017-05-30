@@ -1,11 +1,12 @@
 /*
-Theme Name: GraphQL Workshop - Styling the Routes
+Theme Name: GraphQL Workshop - GraphQL Queries
 Theme URI: https://wpgraphql.com/
 Author: WPGraphQL
 Author URI: https://wpgraphql.com/
-Description: Styling the Routes - At this point, we now have a HomePage, MoviesPage and MoviePage, all with basic
-structure and styles. We also have links that take us to the various routes.
-Version: 0.0.6
+Description: GraphQL Queries - At this point, we have successfully hooked up our Single Page App to fetch data from
+WordPress using Apollo Client and GraphQL queries, save the data in our Redux store and render the data in our
+components.
+Version: 0.0.8
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: JavaScript, GraphQL, Single Page App
